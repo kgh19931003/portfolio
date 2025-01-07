@@ -146,3 +146,21 @@ allOpen {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+
+// npm 빌드 태스크
+tasks.register<Exec>("npmBuild") {
+    workingDir("src/main/frontend")
+    commandLine("npm", "run", "build")
+}
+
+// 리액트 빌드 결과물을 static 폴더로 복사
+tasks.register<Copy>("copyReactBuild") {
+    from("src/main/frontend/build")
+    into("src/main/resources/static")
+}
+
+// 스프링 부트 빌드 전에 리액트 빌드 실행
+tasks.named("bootJar") {
+    dependsOn("npmBuild", "copyReactBuild")
+}
