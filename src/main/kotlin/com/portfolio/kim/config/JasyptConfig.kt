@@ -10,16 +10,26 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class JasyptConfig {
 
+    @Value("\${jasypt.encryptor.password}")
+    private val password: String? = null
+
     @Bean("jasyptStringEncryptor")
-    fun jasyptStringEncryptor(): StringEncryptor {
+    fun stringEncryptor(): StringEncryptor {
         val encryptor = PooledPBEStringEncryptor()
-
-        encryptor.apply {
-            setPoolSize(4) // Pool size 설정 추가
-            setPassword("test") // 암호화 키
-            setAlgorithm("PBEWithMD5AndDES") // 암호화 알고리즘
+        val config = SimpleStringPBEConfig().apply {
+            password = this@JasyptConfig.password
+            algorithm = "PBEWithMD5AndDES"
+            setKeyObtentionIterations("1000")
+            setPoolSize("1")
+            providerName = "SunJCE"
+            setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator")
+            setIvGeneratorClassName("org.jasypt.iv.NoIvGenerator")
+            stringOutputType = "base64"
         }
-
+        encryptor.setConfig(config)
         return encryptor
     }
+
+
+
 }

@@ -2,10 +2,11 @@ package com.portfolio.kim.util
 
 
 import org.jasypt.encryption.StringEncryptor
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 
 @Component
-class JasyptUtils(private val encryptor: StringEncryptor) {
+class JasyptUtils(@Qualifier("jasyptStringEncryptor") private val encryptor: StringEncryptor) {
 
     fun encrypt(value: String): String = encryptor.encrypt(value)
 
