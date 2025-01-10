@@ -1,3 +1,6 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+import java.util.Properties
+
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
@@ -66,10 +69,19 @@ sourceSets {
     main {
         java {
             srcDirs(
+                "build/generated-src/jooq/portfolio"
             )
         }
     }
 }
+
+
+val envProps = Properties().apply {
+    file(".env").inputStream().use { load(it) }
+}
+
+val activeProfile = envProps.getProperty("SPRING_PROFILES_ACTIVE") ?: "local"
+
 
 jooq {
     version.set("3.18.0")
@@ -80,6 +92,8 @@ jooq {
             generateSchemaSourceOnCompilation.set(true)
 
             jooqConfiguration.apply {
+
+                println("---------------"+activeProfile)
 
                 jdbc.apply {
                     driver = "org.mariadb.jdbc.Driver"
@@ -99,7 +113,7 @@ jooq {
                         name = "org.jooq.meta.mysql.MySQLDatabase"
                         includes = ".*"
                         excludes = "flyway_schema_history|temp_.*"
-                        inputSchema = "base"
+                        inputSchema = "portfolio"
                     }
 
                     generate.apply {
@@ -111,8 +125,8 @@ jooq {
                     }
 
                     target.apply {
-                        packageName = "com.portfolio.kim"
-                        directory = "build/generated-src/jooq/"
+                        packageName = "com.portfolio.kim.jooq.portfolio"
+                        directory = "build/generated-src/jooq/portfolio"
                     }
 
                     strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
@@ -149,18 +163,49 @@ tasks.withType<Test> {
 
 
 // npm 빌드 태스크
+tasks.register<Exec>("npmInstall") {
+    // 절대 경로로 지정
+    workingDir(project.projectDir.resolve("src/main/react"))
+    // 운영체제 구분
+    if (org.gradle.internal.os.OperatingSystem.current().isWindows) {
+        // Windows 환경
+        commandLine("cmd", "/c", "npm", "install")
+    } else {
+        // Linux, Mac 환경
+        commandLine("npm", "install")
+    }
+}
+
+
+// npm 빌드 태스크
 tasks.register<Exec>("npmBuild") {
-    workingDir("src/main/frontend")
-    commandLine("npm", "run", "build")
+    dependsOn("npmInstall")    // npm build 이후에 실행되도록 설정
+    // 절대 경로로 지정
+    workingDir(project.projectDir.resolve("src/main/react"))
+    // 운영체제 구분
+    if (org.gradle.internal.os.OperatingSystem.current().isWindows) {
+        // Windows 환경
+        commandLine("cmd", "/c", "npm", "run", "build")
+    } else {
+        // Linux, Mac 환경
+        commandLine("npm", "run", "build")
+    }
 }
 
 // 리액트 빌드 결과물을 static 폴더로 복사
 tasks.register<Copy>("copyReactBuild") {
-    from("src/main/frontend/build")
+    dependsOn("npmBuild")    // npm build 이후에 실행되도록 설정
+    from("src/main/react/dist")
     into("src/main/resources/static")
 }
 
 // 스프링 부트 빌드 전에 리액트 빌드 실행
-tasks.named("bootJar") {
-    dependsOn("npmBuild", "copyReactBuild")
+tasks.bootJar {
+    dependsOn("copyReactBuild")  // copyReactBuild만 의존성으로 설정
 }
+
+// processResources가 copyReactBuild 이후에 실행되도록 설정
+tasks.processResources {
+    dependsOn("copyReactBuild")
+}
+

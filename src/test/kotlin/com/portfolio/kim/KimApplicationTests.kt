@@ -1,9 +1,6 @@
 package com.portfolio.kim
 
-import com.portfolio.kim.util.JasyptUtils
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
-import org.jasypt.encryption.StringEncryptor
-import org.jasypt.encryption.pbe.PooledPBEStringEncryptor
+import com.portfolio.kim.utils.JasyptUtils
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

@@ -1,4 +1,4 @@
-package com.portfolio.kim.util
+package com.portfolio.kim.utils
 
 
 import org.jasypt.encryption.StringEncryptor
