@@ -125,7 +125,7 @@ spring:
     resources:
       static-locations: classpath:/static/
   datasource:
-    url: jdbc:mariadb://172.17.0.3:3306/portfolio?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mariadb://host.docker.internal:3306/portfolio?useUnicode=true&characterEncoding=utf8
     username: ENC(A6bs9PFdqSREKHU6ZT2X/A==)
     password: ENC(FaWhFpcpyykwCtIcbPTDqw==)
     hikari:

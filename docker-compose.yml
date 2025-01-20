@@ -1,5 +1,33 @@
 # docker-compose.yml
 services:
+  app:
+    depends_on:
+      mariadb:
+        condition: service_healthy  # mariadb가 healthy 상태가 될 때까지 대기
+    image: portfolio
+    container_name: portfolio
+    networks:
+      my-network:
+        ipv4_address: 172.18.0.3    # 고정 IP 할당
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SPRING_PROFILES_ACTIVE: docker
+    #command: ["java", "-jar", "/portfolio/app.jar"]  # 명시적으로 실행 명령 지정
+    ports:
+      - "80:80"        # -p 80:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:           # -e 옵션들
+      SPRING_PROFILES_ACTIVE: docker
+      JASYPT_ENCRYPTOR_PASSWORD: bP9@kD52mN2@vL7*wQ4&hJ6
+      JASYPT_ID: A6bs9PFdqSREKHU6ZT2X/A==
+      JASYPT_PASSWORD: FaWhFpcpyykwCtIcbPTDqw==
+    volumes:              # -v 옵션
+      - ./logs:/logs
+    restart: on-failure       # --restart always
+
 
   mariadb:
     image: mariadb:latest
@@ -14,37 +42,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123123
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "172.18.0.2", "-u", "root", "-p 123123" ]
+      test: [ "CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-p123123" ]
       interval: 10s      # 검사 주기
       timeout: 5s       # 검사 타임아웃
       retries: 5        # 재시도 횟수
       start_period: 30s # 초기 시작 대기 시간
 
-  app:
-    depends_on:
-      mariadb:
-        condition: service_healthy  # mariadb가 healthy 상태가 될 때까지 대기
-    image: openjdk:latest
-    container_name: portfolio
-    networks:
-      my-network:
-        ipv4_address: 172.18.0.3    # 고정 IP 할당
-    build:
-      context: .
-      args:
-        SPRING_PROFILES_ACTIVE: docker
-    ports:
-      - "80:80"        # -p 80:80
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    environment:           # -e 옵션들
-      SPRING_PROFILES_ACTIVE: docker
-      JASYPT_ENCRYPTOR_PASSWORD: bP9@kD52mN2@vL7*wQ4&hJ6
-      JASYPT_ID: A6bs9PFdqSREKHU6ZT2X/A==
-      JASYPT_PASSWORD: FaWhFpcpyykwCtIcbPTDqw==
-    volumes:              # -v 옵션
-      - ./logs:/logs
-    restart: always       # --restart always
 
 # 네트워크 정의 추가
 networks:

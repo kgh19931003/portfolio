@@ -1,0 +1,462 @@
+import React from "react"
+import Slider from "react-slick"
+import { Helmet } from 'react-helmet';
+import '../App.css'
+import '../index.css'
+import PrivacyInfoList from "../components/info/privacyInfo.tsx"; // List 컴포넌트 import
+import StackInfoList from "../components/info/stackInfo.tsx";
+
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
+
+const php: React.FC = () => {
+
+    const privacyData = [
+        { id: 1, name: '생년월일', value: '1993. 10. 03' },
+        { id: 1, name: 'Addr', value: '부산 북구 화명 양달로 80-11 102동 1401호' },
+        { id: 1, name: 'E-mail', value: 'sasaa3865@naver.com' },
+        { id: 1, name: 'Phone', value: '010 - 7615 - 3865' },
+    ];
+
+
+    const stackData = [
+        { id: 1, name: 'Backend', value: ['php.png'], size: ['150'] },
+        { id: 1, name: '자격증', value: ['certifi.png'], size: ['130']  },
+        { id: 1, name: 'Version Control', value: ['github.png', 'jenkins.png'], size: ['170', '250'] },
+        { id: 1, name: 'IDE', value: ['phpstorm.png'], size: ['120'] },
+        { id: 1, name: 'Flatform', value: ['docker.png'], size: ['170'] },
+        { id: 1, name: 'Framework', value: ['ci4.png'], size: ['110'] },
+    ];
+
+
+    const settings = {
+        dots: true,
+        infinite: false,
+        arrow:false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
+    return (
+        <div className="App" >
+            <Helmet>
+                <title>PHP Portfolio</title>
+                <meta name="description" content="This is the PHP portfolio page." />
+            </Helmet>
+
+            <div className="user_form">
+
+                <div className="line">
+                    <div className="flex" style={{padding: "50px 0px"}}>
+
+                        <div className="user_info">
+                            <PrivacyInfoList ListInfo={privacyData} />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="user_career_2">
+
+                <div className="user_career_reason_2">
+                    <ul className="user_career_reason_ul_2">
+
+
+                        <li className="user_career_reason_li_2">
+
+
+                            <div className="user_career_reason_div_2">
+                                <div style={{display: "inline-block"}}>
+
+
+                                    <div className="max-w-7xl">
+                                        <StackInfoList ListInfo={stackData} />
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div className="portfolio_list vertical">
+                {/*
+                  <div>
+                    <button type="button" onClick={() => this.setState({ isOpen: true })}>
+                      Open Lightbox
+                    </button>
+
+                    {isOpen && (
+                      <Lightbox
+                        mainSrc={images[photoIndex]}
+                        nextSrc={images[(photoIndex + 1) % images.length]}
+                        prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                        onMovePrevRequest={() =>
+                          this.setState({
+                            photoIndex: (photoIndex + images.length - 1) % images.length,
+                          })
+                        }
+                        onMoveNextRequest={() =>
+                          this.setState({
+                            photoIndex: (photoIndex + 1) % images.length,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                */}
+
+
+                <div className="portfolio_block">
+
+
+                    <div className="slide_div">
+                        <Slider {...settings}>
+                            <div>
+                                <img src="/img/matchup/1.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/matchup/2.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/matchup/3.png" alt="slide_img" />
+                            </div>
+                        </Slider>
+                    </div>
+
+
+                    <div className="slide_exp_div">
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">프로젝트</div>
+                                <div className="slide_exp_word">매치업 랜딩페이지</div>
+                            </div>
+
+                            <div>
+                                <div className="slide_exp_title">URL</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://www.match-up.co.kr/">https://www.match-up.co.kr/</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">작업범위</div>
+                                <div className="slide_exp_word">PHP 백엔드, 프론트엔드(Jquery), 관리자 이미지 업로드 작업</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">개발환경</div>
+                                <div className="slide_exp_word">cafe24 Server, PHP 7.4</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">플랫폼 설명</div>
+                                <div className="slide_exp_word">
+
+                                    매치업 플랫폼을 홍보하는 랜딩 페이지를 작업했습니다.
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div className="portfolio_block vertical">
+
+
+                    <div className="slide_div">
+                        <Slider {...settings}>
+                            <div>
+                                <img src="/img/go/1.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/go/2.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/go/3.png" alt="slide_img" />
+                            </div>
+                        </Slider>
+                    </div>
+
+
+                    <div className="slide_exp_div">
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">프로젝트</div>
+                                <div className="slide_exp_word">가자</div>
+                            </div>
+
+                            <div>
+                                <div className="slide_exp_title">URL</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://softer084.cafe24.com">softer076.cafe24.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">구글플레이 스토어</div>
+                                <div className="slide_exp_word">
+                                    현재 게시 취소됨
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">앱 스토어</div>
+                                <div className="slide_exp_word">
+                                    현재 게시 취소됨
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">작업범위</div>
+                                <div className="slide_exp_word">PHP 백엔드, 프론트엔드(Jquery), <br/>하이브리드앱 작업 및 배포( AOS, IOS )</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">개발환경</div>
+                                <div className="slide_exp_word">cafe24 Server, PHP 7.4</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">플랫폼 설명</div>
+                                <div className="slide_exp_word">
+
+                                    플랫폼에 등록된 상점을 들려 이용시 쿠폰과 스탬프를 지급하여
+                                    사용 할 수 있게 해주는 앱입니다.
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div className="portfolio_block horizontal" style={{display:"block"}}>
+
+
+                    <div className="slide_div" style={{width:"100%"}}>
+                        <Slider {...settings}>
+                            <div>
+                                <img src="/img/kanta/1.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/kanta/2.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/kanta/3.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/kanta/4.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/kanta/5.png" alt="slide_img" />
+                            </div>
+
+                        </Slider>
+                    </div>
+
+
+                    <div className="slide_exp_div">
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">프로젝트</div>
+                                <div className="slide_exp_word">칸타수학<br/>(교육영상 플랫폼)</div>
+                            </div>
+
+                            <div>
+                                <div className="slide_exp_title">URL</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://softer084.cafe24.com">softer084.cafe24.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">구글플레이 스토어</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wizmade.kanta">칸타수학 플레이스토어 바로가기</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">작업범위</div>
+                                <div className="slide_exp_word">PHP 백엔드, 프론트엔드(Jquery), <br/>하이브리드앱 작업 및 배포( AOS )</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">개발환경</div>
+                                <div className="slide_exp_word">AWS S3, cafe24 Server, PHP 7.4</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">플랫폼 설명</div>
+                                <div className="slide_exp_word">
+
+                                    강의영상과 시험문제를 온라인으로 학생들에게 제공하여
+                                    학습 효율을 높이는 플랫폼입니다.
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div className="portfolio_block vertical">
+
+
+                    <div className="slide_div">
+                        <Slider {...settings}>
+                            <div>
+                                <img src="/img/park/1.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/park/2.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/park/3.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/park/4.png" alt="slide_img" />
+                            </div>
+                            <div>
+                                <img src="/img/park/5.png" alt="slide_img" />
+                            </div>
+
+                        </Slider>
+                    </div>
+
+
+                    <div className="slide_exp_div">
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">프로젝트</div>
+                                <div className="slide_exp_word">주차실태조사<br/>(주차현황 조사 플랫폼)</div>
+                            </div>
+
+                            <div>
+                                <div className="slide_exp_title">URL</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://softer093.cafe24.com">softer093.cafe24.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">구글플레이 스토어</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wizmade.parkingsys">주차실태조사 플레이스토어 바로가기</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">앱 스토어</div>
+                                <div className="slide_exp_word">
+                                    <a href="https://apps.apple.com/us/app/%EC%A3%BC%EC%B0%A8%EC%8B%A4%ED%83%9C%EC%A1%B0%EC%82%AC/id1582133805">주차실태조사 앱스토어 바로가기</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">작업범위</div>
+                                <div className="slide_exp_word">PHP 백엔드, 프론트엔드(Jquery), <br/>하이브리드앱 작업 및 배포( IOS, AOS )</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">개발환경</div>
+                                <div className="slide_exp_word">AWS S3, AWS RDS, cafe24 Server, PHP 7.4</div>
+                            </div>
+                        </div>
+
+
+                        <div className="slide_exp_line">
+                            <div>
+                                <div className="slide_exp_title">플랫폼 설명</div>
+                                <div className="slide_exp_word">
+
+                                    서울시 주차현황을 조사하는 플랫폼입니다.
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    );
+}
+
+export default php

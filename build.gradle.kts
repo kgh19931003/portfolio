@@ -97,7 +97,7 @@ jooq {
 
                 jdbc.apply {
                     driver = "org.mariadb.jdbc.Driver"
-                    url = "jdbc:mariadb://localhost:3306/portfolio"
+                    url = "jdbc:mariadb://host.docker.internal:3306/portfolio"
                     user = "root"
                     password = "123123"
                     properties.add(org.jooq.meta.jaxb.Property().apply {
