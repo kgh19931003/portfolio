@@ -4,8 +4,9 @@
 도커 컨테이너 빌드 되도록 되어있는 토이 프로젝트 입니다.
 
 
-백엔드 구성
-Kotlin + boot spring
+OS       ->  Linux Docker
+Backend  ->  Kotlin + Boot spring
+Frontend ->  React + Vite
+Database ->  Mysql
+Ide      ->  Intellij Ultimate
 
-프론트엔드 구성
-react + vite
