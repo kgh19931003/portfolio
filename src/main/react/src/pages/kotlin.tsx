@@ -2,89 +2,108 @@ import React from "react";
 import {Helmet} from "react-helmet"; // List 컴포넌트 import
 import '../App.css'
 import '../index.css'
-import ServerInfoList from "../components/info/serverInfo.tsx";
 import PrivacyInfoList from "../components/info/privacyInfo.tsx";
 import StackInfoList from "../components/info/stackInfo.tsx";
+import Button from "../components/button/button.tsx";
+
 
 
 const kotlin: React.FC = () => {
 
-    const serverData = [
-        { id: 1, name: 'OS', value: 'Linux - Docker' },
-        { id: 1, name: 'Backend', value: 'Kotlin + Boot Spring' },
-        { id: 1, name: 'Frontend', value: 'REACT + Vite' },
-        { id: 1, name: 'Database', value: 'Mysql' },
-        { id: 1, name: 'IDE', value: 'Intellij Ultimate' },
-    ];
-
 
     const privacyData = [
         { id: 1, name: '생년월일', value: '1993. 10. 03' },
-        { id: 1, name: 'Addr', value: '부산 북구 화명 양달로 80-11 102동 1401호' },
-        { id: 1, name: 'E-mail', value: 'sasaa3865@naver.com' },
-        { id: 1, name: 'Phone', value: '010 - 7615 - 3865' },
+        { id: 2, name: 'Addr', value: '부산 북구 화명 양달로 80-11 102동 1401호' },
+        { id: 3, name: 'E-mail', value: 'sasaa3865@naver.com' },
+        { id: 4, name: 'Phone', value: '010 - 7615 - 3865' },
+        { id: 5, name: '경력', value: '0년차' }
+
     ];
 
 
     const stackData = [
         { id: 1, name: 'Backend', value: ['kotlin.png'], size: ['200'] },
-        { id: 1, name: '자격증', value: ['certifi.png'], size: ['130']  },
-        { id: 1, name: 'Version Control', value: ['github.png', 'jenkins.png'], size: ['170', '250'] },
-        { id: 1, name: 'IDE', value: ['intellij.png'], size: ['120'] },
-        { id: 1, name: 'Flatform', value: ['docker.png'], size: ['170'] },
-        { id: 1, name: 'Framework', value: ['boot_spring.png'], size: ['170'] },
+        { id: 2, name: '자격증', value: ['certifi.png'], size: ['130']  },
+        { id: 3, name: 'Version Control', value: ['github.png', 'jenkins.png'], size: ['170', '250'] },
+        { id: 4, name: 'IDE', value: ['intellij.png'], size: ['120'] },
+        { id: 5, name: 'Flatform', value: ['docker.png'], size: ['170'] },
+        { id: 6, name: 'Framework', value: ['boot_spring.png'], size: ['170'] },
     ];
 
 
     return (
-        <div className="App" >
+        <div className="App">
 
             <Helmet>
                 <title>Kotlin Portfolio</title>
-                <meta name="description" content="This is the Kotlin portfolio page." />
+                <meta name="description" content="This is the Kotlin portfolio page."/>
             </Helmet>
 
-            <div className="text-left fixed w-72 py-2 px-4 rounded-lg shadow-md text-black bg-transparent">
-                <table>
-                    <ServerInfoList ListInfo={serverData} />
-                </table>
+
+            <div className="text-left fixed w-72 py-4 px-4 rounded-lg z-50 ">
+                <Button label="Github" onClick={() => {
+                    window.open("https://github.com/kgh19931003/portfolio", "_blank", "noopener,noreferrer");
+                }}/>
             </div>
 
 
-            <div className="user_form">
-
-                <div className="line">
-                    <div className="flex" style={{padding: "50px 0px"}}>
-                        <div className="user_info">
-                            <PrivacyInfoList ListInfo={privacyData}/>
-                        </div>
-                    </div>
+            {/* 개인정보 섹션 */}
+            <div className="py-10 bg-white shadow-2xl rounded-xl max-w-4xl mx-auto mt-10">
+                <div className="text-center text-2xl font-bold mb-6">Personal Information</div>
+                <div className="px-6">
+                    <PrivacyInfoList ListInfo={privacyData} />
                 </div>
+            </div>
 
 
+            {/* 소개 섹션 */}
+            <div className="py-10 mb-10 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl max-w-4xl mx-auto mt-10 shadow-md">
+                <div className="px-6 text-center">
+                    <div>저는 PHP 개발자로 5년간 다양한 프로젝트를 수행하며 웹 개발의 기본기를 다져온 개발자 김근호 입니다.</div>
+                    <div>지금까지의 경험을 기반으로 더 깊이 있는</div>
+                    <div>기술적 도전과 성장을 이루고자 Java 개발자로의 전환을 결심하게 되었습니다.</div>
+                    <br/><br/>
+
+                    <div>PHP로 경력을 시작한 이후, 중소규모의 웹 서비스의 다양한 프로젝트를 경험하였으며</div>
+                    <div>특히, 백엔드 아키텍처 설계, RESTful API</div>
+                    <div>개발, 데이터베이스 설계 및 최적화에 강점을 가지며, 사용자 중심의 안정적인 서비스를 개발하는 데 주력해 왔습니다.</div>
+                    <br/><br/>
+                    <div>또한, 팀 내에서는 코드 리뷰와 협업</div>
+                    <div>도구를 활용해 효율적인 협업 문화를 조성하는 데 기여했습니다.</div>
+                    <br/><br/>
+
+                    <div>PHP는 빠른 개발 속도와 접근성 덕분에 훌륭한 도구지만, 더욱 확장성 있는 시스템 설계와 성능 최적화가 필요한 환경에서</div>
+                    <div>Java가 제공하는 강력한 프레임워크와 객체지향 프로그래밍의 이점을 느끼게 되었습니다.</div>
+                    <br/><br/>
+                    <div>특히, Spring Framework와 같은 Java 기반 기술 스택은 대규모 프로젝트와</div>
+                    <div>엔터프라이즈 시스템 구축에 최적화되어 있으며, 체계적인 환경을 자랑하기 때문에 전향을 생각하게 되었습니다.</div>
+                    <br/><br/>
+
+                    <div>Java로 전환을 위해 기본 문법과 객체지향 개념을 학습했으며,</div>
+                    <div>현재는 Spring Boot를 활용한 웹 애플리케이션 개발에 매진하고 있습니다.</div>
+                    <br/><br/>
+                    <div>개인적으로 현재 보이는 포트폴리오 사이트를 작업하며</div>
+                    <div>MVC 아키텍처, 데이터베이스 연동(JPA/Hibernate, Jooq), REST API 구축 등을 경험하였고,</div>
+                    <div>이를 통해 Java의 생태계에 대한 이해도를 높였습니다.</div>
+                </div>
             </div>
 
 
             <div className="user_career_2">
 
-            <div className="user_career_reason_2">
+                <div className="user_career_reason_2">
                     <ul className="user_career_reason_ul_2">
-
-
                         <li className="user_career_reason_li_2">
 
-
                             <div className="user_career_reason_div_2">
-                                <div style={{ display: "inline-block"}}>
+                                <div style={{display: "inline-block"}}>
 
                                     <div className="max-w-7xl">
-                                        <StackInfoList ListInfo={stackData} />
+                                        <StackInfoList ListInfo={stackData}/>
                                     </div>
 
                                 </div>
                             </div>
-
-
                         </li>
                     </ul>
                 </div>

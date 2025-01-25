@@ -9,7 +9,7 @@ interface ButtonProps {
 // Button 컴포넌트 정의
 const Button: React.FC<ButtonProps> = ({ label, onClick }) => {
     return (
-        <button onClick={onClick} className="px-4 py-2 bg-blue-500 text-white rounded">
+        <button onClick={onClick} className="px-4 py-2 bg-black z-5 text-white rounded">
             {label}
         </button>
     );
