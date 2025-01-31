@@ -36,7 +36,7 @@ jasypt:
     password: ${JASYPT_ENCRYPTOR_PASSWORD}
 
 server:
-  port: 80
+  port: 8080
   shutdown: graceful
   servlet:
     context-path: /
@@ -106,7 +106,7 @@ jasypt:
 
 
 server:
-  port: 80
+  port: 8080
   shutdown: graceful
   servlet:
     context-path: /
@@ -153,7 +153,7 @@ jasypt:
     password: ${JASYPT_ENCRYPTOR_PASSWORD}
 
 server:
-  port: 80
+  port: 8080
   shutdown: graceful
   servlet:
     context-path: /
@@ -199,7 +199,7 @@ jasypt:
     password: ${JASYPT_ENCRYPTOR_PASSWORD}
 
 server:
-  port: 80
+  port: 8080
   shutdown: graceful
   servlet:
     context-path: /

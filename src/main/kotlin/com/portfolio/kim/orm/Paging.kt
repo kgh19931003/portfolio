@@ -1,4 +1,4 @@
-package com.bs.wfund_search.data
+package com.portfolio.kim.form
 
 import com.portfolio.kim.form.ListForm
 import org.jooq.*

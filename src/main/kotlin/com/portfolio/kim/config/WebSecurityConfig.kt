@@ -77,6 +77,7 @@ class WebSecurityConfig {
                 "/search/**",
                 "/member/**",
                 //"/company/**",
+                "/api/**",
                 "/error"
             )
                 .permitAll()

@@ -1,17 +1,15 @@
 package com.portfolio.kim.orm.jpa
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import jakarta.validation.constraints.Size
 
 @Entity
 @Table(name = "member", schema = "portfolio")
 data class MemberEntity(
     @Id
-    @Column(name = "mem_idx", nullable = false)
-    var id: Int? = null,
+    @Column(name = "mem_idx")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // 자동 ID 생성 설정
+    var id: Long? = null,
 
     @Size(max = 50)
     @Column(name = "mem_id", length = 50)

@@ -52,6 +52,7 @@ class JwtTokenFilter (
             "/v1/api-docs",
             "/v3/api-docs/swagger-config",
             "/swagger-ui/index.html",
+            "/api/**",
         )
         val path = request.requestURI
         return pathsToExclude.any { path.startsWith("/pg$it") }
@@ -89,7 +90,7 @@ class JwtTokenFilter (
                         val newRefreshToken = jwtTokenProvider.createRefreshToken(loginId)
 
                         // 토큰 저장
-                        memberService.Msave(memberService.findByMemId(loginId).copy(memAccessToken = newAccessToken, memRefreshToken = newRefreshToken))
+                        memberService.save(memberService.findByMemId(loginId).copy(memAccessToken = newAccessToken, memRefreshToken = newRefreshToken))
 
                         // 응답 헤더에 새로운 액세스 토큰 추가
                         response.addHeader("acessToken", newAccessToken)

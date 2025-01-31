@@ -3,6 +3,7 @@ package com.portfolio.kim.service
 
 import com.bs.wfund_search.form.MemberList
 import com.bs.wfund_search.form.SearchForm
+import com.portfolio.kim.form.ListPagination
 import com.portfolio.kim.orm.jooq.MemberDslRepository
 import com.portfolio.kim.orm.jpa.MemberEntity
 import com.portfolio.kim.orm.jpa.MemberRepository
@@ -16,21 +17,43 @@ class MemberService(
 ) {
 
     /**
-     * 회원정보 조회
+     * 특정 회원정보 조회
      */
-    fun getMemberOne(form: SearchForm): List<MemberList> {
+    fun getMemberOne(id: Long): MemberList {
         return try {
-            memberDslRepository.getMemberOne(form).map{
+            memberRepository.findByid(id).let{
                 MemberList(
-                    memberId = it.memberId,
-                    memberName = it.memberName,
-                    memberMySeller = it.memberMySeller
+                    memberIdx = it.id,
+                    memberId = it.memId,
+                    memberName = it.memName,
+                    memberCreatedAt = it.memCreatedAt,
+                    memberUpdatedAt = it.memUpdatedAt
                 )
             }
         } catch (e: Exception) {
             throw Exception(e)
         }
     }
+
+    /**
+     * 특정 회원정보 조회
+     */
+    fun getMemberList(form: SearchForm): ListPagination<MemberList> {
+        return try {
+            memberDslRepository.getMemberList(form).map{
+                MemberList(
+                    memberIdx = it.memberIdx,
+                    memberId = it.memberId,
+                    memberName = it.memberName,
+                    memberCreatedAt = it.memberCreatedAt,
+                    memberUpdatedAt = it.memberUpdatedAt
+                )
+            }
+        } catch (e: Exception) {
+            throw Exception(e)
+        }
+    }
+
 
     fun findByMemId(id: String): MemberEntity {
         val member = memberRepository.findByMemId(id)
@@ -71,7 +94,8 @@ class MemberService(
         return memberRepository.deleteMemRefreshTokenByMemId(loginId).memRefreshToken
     }
 
-    fun Msave(member: MemberEntity): MemberEntity {
+
+    fun save(member: MemberEntity): MemberEntity {
         return memberRepository.save(member)
     }
 

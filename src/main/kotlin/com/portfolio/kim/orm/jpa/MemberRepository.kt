@@ -9,9 +9,14 @@ import org.springframework.stereotype.Repository
 interface MemberRepository : JpaRepository<MemberEntity, Long> {
     fun existsByMemId(memId: String): Boolean
 
+    fun findByid(id: Long): MemberEntity
+
     fun findByMemId(memId: String): MemberEntity
 
     fun findByMemIdAndMemRefreshToken(memId: String, memUuid: String): MemberEntity
+
+
+    override fun deleteById(id: Long)
 
     fun deleteMemAccessTokenByMemId(memId: String): MemberEntity
 

@@ -37,6 +37,8 @@ services:
         ipv4_address: 172.18.0.2    # 고정 IP 할당
     ports:
       - "3306:3306"    # 호스트:컨테이너
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - C:\docker\db\data:/var/lib/mysql  # Named Volume
     environment:

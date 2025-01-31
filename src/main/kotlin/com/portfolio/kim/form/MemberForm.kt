@@ -9,7 +9,9 @@ data class MemberForm(
 
 
 data class MemberList(
+    val memberIdx: Long?,
     val memberId: String? = null,
     val memberName: String? = null,
-    val memberMySeller: String? = null
+    val memberCreatedAt: String? = null,
+    val memberUpdatedAt: String? = null,
 )
