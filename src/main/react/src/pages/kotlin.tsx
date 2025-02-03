@@ -55,7 +55,7 @@ const kotlin: React.FC = () => {
                 }}/>
             </div>
 
-            <div className="text-left fixed w-72 top-10 left-0 py-0 px-4 rounded-lg z-50 ">
+            <div className="text-left fixed w-72 top-24 left-0 py-0 px-4 rounded-lg z-50 ">
                 <Button label="게시판 구현" bg="bg-blue-500" onClick={() => {
                     window.open("http://kim-portfolio.p-e.kr/react-table", "_blank", "noopener,noreferrer");
                 }}/>

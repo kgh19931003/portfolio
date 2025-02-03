@@ -1,4 +1,4 @@
-package com.bs.wfund_search.form
+package com.portfolio.kim.form
 
 import java.math.BigDecimal
 
