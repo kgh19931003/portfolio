@@ -74,9 +74,8 @@ class WebSecurityConfig {
                 "/webjars/**",
                 "/auth/**",
                 "/auth/login",
-                "/search/**",
                 "/member/**",
-                //"/company/**",
+                "/img/**",
                 "/api/**",
                 "/error"
             )
