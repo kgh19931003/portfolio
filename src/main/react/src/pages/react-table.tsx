@@ -169,7 +169,7 @@ const MyComponent = () => {
 
         try {
             const response = await axios.get<ApiResponse>(
-                `http://kim-portfolio.p-e.kr:8080/api/member-list?page=${page}&size=${size}`
+                `http://kim-portfolio.p-e.kr/api/member-list?page=${page}&size=${size}`
             );
             setData(response.data.contents);
             setTotalPages(Math.max(1, Math.ceil(response.data.total / size)));
@@ -189,7 +189,7 @@ const MyComponent = () => {
         if (!window.confirm("정말 삭제하시겠습니까?")) return;
 
         try {
-            await axios.delete(`http://kim-portfolio.p-e.kr:8080/api/member-delete/${id}`);
+            await axios.delete(`http://kim-portfolio.p-e.kr/api/member-delete/${id}`);
             alert("삭제 완료!");
             fetchData(pageIndex, pageSize); // 데이터 갱신
         } catch (error) {
