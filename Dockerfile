@@ -41,7 +41,7 @@ WORKDIR /portfolio
 # 빌드 단계에서 생성된 JAR 파일 복사
 COPY --from=build /portfolio/build/libs/*.jar app.jar
 
-# 8080 포트 노출
+# 80 포트 노출
 EXPOSE 80
 
 # JAR 파일 실행

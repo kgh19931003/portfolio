@@ -22,7 +22,7 @@ const EditForm = () => {
         if (isEditMode) {
             const fetchMember = async () => {
                 try {
-                    const response = await axios.get<User>(`http://kim-portfolio.p-e.kr:8080/api/member-one/${id}`);
+                    const response = await axios.get<User>(`http://kim-portfolio.p-e.kr/api/member-one/${id}`);
                     setName(response.data.memberName);
                     setMemberId(response.data.memberId);
                 } catch (error) {
@@ -43,7 +43,7 @@ const EditForm = () => {
         try {
             if (isEditMode) {
                 // 수정 요청
-                await axios.put(`http://kim-portfolio.p-e.kr:8080/api/member-update/${id}`, {
+                await axios.put(`http://kim-portfolio.p-e.kr/api/member-update/${id}`, {
                     memberName: name,
                     memberId: memberId,
                 });
@@ -51,7 +51,7 @@ const EditForm = () => {
                 location.href = "http://kim-portfolio.p-e.kr/react-table"
             } else {
                 // 추가 요청
-                await axios.post("http://kim-portfolio.p-e.kr:8080/api/member-create", {
+                await axios.post("http://kim-portfolio.p-e.kr/api/member-create", {
                     memberName: name,
                     memberId: memberId,
                 });
