@@ -13,7 +13,13 @@ class WebConfig : WebMvcConfigurer {
     }
 
     override fun addViewControllers(registry: ViewControllerRegistry) {
-        registry.addViewController("/{path:[^\\.]*}")
+        // /api/** 경로는 Spring Boot에서 처리되도록 제외
+        registry.addViewController("/{path:^(?!api)(?!.*\\.).*$}")
             .setViewName("forward:/index.html")
+
+        // /edit/{id}/{other} 형태의 경로 처리 (2개 이상의 세그먼트 포함)
+        registry.addViewController("/edit/{other:.*}")
+            .setViewName("forward:/index.html")
+
     }
 }

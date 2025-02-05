@@ -2,6 +2,7 @@ package com.portfolio.kim.filter
 
 
 import com.nimbusds.oauth2.sdk.http.HTTPResponse
+import com.portfolio.kim.proto.isNotNull
 import com.portfolio.kim.service.MemberService
 import com.portfolio.kim.utils.JwtTokenProvider
 import io.jsonwebtoken.ExpiredJwtException
@@ -31,9 +32,11 @@ class JwtTokenFilter (
         filterChain: FilterChain
     ) {
         try {
-            jwtVerify(request, response, filterChain)
+            jwtTokenProvider.resolveToken(request).let{
+                if(it.isNotBlank()) jwtVerify(request, response, filterChain)
+            }
         } catch (e: ExpiredJwtException) {
-
+            logger.error("ExpiredJwtException: ${e.message}")
         } catch (e: Exception) {
             logger.error("token filter error: ${e.message}")
         }

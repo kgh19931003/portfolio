@@ -77,6 +77,11 @@ class WebSecurityConfig {
                 "/member/**",
                 "/img/**",
                 "/api/**",
+                "/edit/**",
+                "/kotlin/**",
+                "/php/**",
+                "/resources/**",
+                "/react-table",
                 "/error"
             )
                 .permitAll()
