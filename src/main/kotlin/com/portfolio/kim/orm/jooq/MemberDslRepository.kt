@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository
 class MemberDslRepository(
     private val dsl: DSLContext,
 ) {
-    fun getMemberQuery(form: SearchForm): SelectConditionStep<Record5<Int?, String?, String?, String?, String?>> {
+    fun getMemberQuery(form: SearchForm): SelectConditionStep<Record5<Long?, String?, String?, String?, String?>> {
         return dsl.select(
                 MEMBER.MEM_IDX.`as`("memberIdx"),
                 MEMBER.MEM_ID.`as`("memberId"),
