@@ -98,8 +98,8 @@ jooq {
                 jdbc.apply {
                     driver = "org.mariadb.jdbc.Driver"
                     url = "jdbc:mariadb://kim-portfolio-db.ctu2006kcg8o.ap-northeast-2.rds.amazonaws.com:3306/portfolio"
-                    user = "root"
-                    password = "123123"
+                    user = "admin"
+                    password = "dnfpxks132"
                     properties.add(org.jooq.meta.jaxb.Property().apply {
                         key = "serverTimezone"
                         value = "UTC"
