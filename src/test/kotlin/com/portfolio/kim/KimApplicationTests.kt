@@ -27,7 +27,7 @@ internal class JasyptTest {
     @Test
     fun encryptTest() {
 
-        val plainText = "root"  // 암호화할 텍스트
+        val plainText = ""  // 암호화할 텍스트
 
         val jasypt = StandardPBEStringEncryptor()
         jasypt.setPassword(password)

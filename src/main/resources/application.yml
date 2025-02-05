@@ -7,9 +7,9 @@ spring:
     resources:
       static-locations: classpath:/static/
   datasource:
-    url: jdbc:mariadb://localhost:3306/portfolio?useUnicode=true&characterEncoding=utf8
-    username: ENC(A6bs9PFdqSREKHU6ZT2X/A==)
-    password: ENC(FaWhFpcpyykwCtIcbPTDqw==)
+    url: jdbc:mariadb://kim-portfolio-db.ctu2006kcg8o.ap-northeast-2.rds.amazonaws.com:3306/portfolio?useUnicode=true&characterEncoding=utf8
+    username: ENC(PyuPWEUwSqyiZMbqgMv5tQ==)
+    password: ENC(6RfZdx9K3xLFVphv7aWbnja+WhUR6jZx)
     hikari:
       pool-name: HikariPool
       maximum-pool-size: 10
@@ -72,9 +72,9 @@ spring:
     resources:
       static-locations: classpath:/static/
   datasource:
-    url: jdbc:mariadb://localhost:3306/portfolio?useUnicode=true&characterEncoding=utf8
-    username: ENC(${JASYPT_ID})
-    password: ENC(${JASYPT_PASSWORD})
+    url: jdbc:mariadb://kim-portfolio-db.ctu2006kcg8o.ap-northeast-2.rds.amazonaws.com:3306/portfolio?useUnicode=true&characterEncoding=utf8
+    username: ENC(PyuPWEUwSqyiZMbqgMv5tQ==)
+    password: ENC(6RfZdx9K3xLFVphv7aWbnja+WhUR6jZx)
     hikari:
       pool-name: HikariPool
       maximum-pool-size: 10
@@ -171,9 +171,9 @@ spring:
     resources:
       static-locations: classpath:/static/
   datasource:
-    url: jdbc:mariadb://localhost:3306/portfolio?useUnicode=true&characterEncoding=utf8
-    username: ENC(A6bs9PFdqSREKHU6ZT2X/A==)
-    password: ENC(FaWhFpcpyykwCtIcbPTDqw==)
+    url: jdbc:mariadb://kim-portfolio-db.ctu2006kcg8o.ap-northeast-2.rds.amazonaws.com:3306/portfolio?useUnicode=true&characterEncoding=utf8
+    username: ENC(PyuPWEUwSqyiZMbqgMv5tQ==)
+    password: ENC(6RfZdx9K3xLFVphv7aWbnja+WhUR6jZx)
     hikari:
       pool-name: HikariPool
       maximum-pool-size: 10
