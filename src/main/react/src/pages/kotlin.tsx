@@ -61,7 +61,7 @@ const kotlin: React.FC = () => {
                 }}/>
             </div>
 
-            <div className="text-left fixed w-72 top-24 left-0 py-0 px-4 rounded-lg z-50 ">
+            <div className="text-left fixed w-72 top-48 left-0 py-0 px-4 rounded-lg z-50 ">
                 <Button label="전자정부 프레임워크" bg="bg-blue-500" onClick={() => {
                     window.open("http://kim-portfolio.p-e.kr:8080", "_blank", "noopener,noreferrer");
                 }}/>
